@@ -8,10 +8,10 @@ const Navigation = () => {
   const path = usePathname();
 
   return (
-    <div className="w-full absolute bg-white bg-opacity-25 p-5 top-0">
-      <ul className="flex justify-between">
+    <div className="w-full absolute bg-white bg-opacity-25 top-0">
+      <ul className="flex">
         {navigationMenu.map((menu) => (
-          <li key={menu.idx}>
+          <li key={menu.idx} className="p-5">
             <Link href={menu.href} className="font-bold">{menu.title}</Link>
           </li>
         ))}
