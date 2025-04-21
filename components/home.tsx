@@ -1,6 +1,39 @@
 "use client";
 
+import { useCallback, useEffect } from "react";
+
+interface HomeProps {
+  users: any;
+}
+
 const Home = () => {
+  const getUserData = useCallback(async () => {
+    try {
+      const res = await fetch(
+        "/api/home", 
+        { 
+          method: "GET", 
+          headers: { 
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        const data = await res.json();
+
+        console.log(data);
+      }
+
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+  
   return (
     <div></div>
   );
