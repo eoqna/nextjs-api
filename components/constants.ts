@@ -13,7 +13,7 @@ export const navigationMenu: Menu[] = [
   {
     idx: 1,
     title: "Skill",
-    href: "/skill",
+    href: "/aptTrade",
   },
   {
     idx: 2,

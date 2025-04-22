@@ -2,10 +2,6 @@
 
 import { useCallback, useEffect } from "react";
 
-interface HomeProps {
-  users: any;
-}
-
 const Home = () => {
   const getUserData = useCallback(async () => {
     try {
