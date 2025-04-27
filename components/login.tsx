@@ -35,9 +35,6 @@ const Login = () => {
         "/api/login", 
         { 
           method: "POST", 
-          headers: { 
-            "Content-Type": "application/json",
-          },
           body: JSON.stringify({ 
             id: userInfo.id, 
             password: userInfo.password, 
@@ -48,7 +45,7 @@ const Login = () => {
       if (res.status === 200) {
         const data = await res.json();
 
-        if (data.error) {
+        if (data.code === "23") {
           return alert("아이디 또는 비밀번호가 다릅니다");
         }
 

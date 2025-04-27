@@ -1,29 +1,22 @@
-export async function POST( req: Request ) {
+import { NextRequest, NextResponse } from "next/server";
+
+interface LoginResponseProps {
+  code: string;
+  msg: string;
+  name?: string;
+}
+
+export async function POST( req: NextRequest ) {
   const body = await req.json();
   const { id, password } = body;
+  let json: LoginResponseProps = { code: "", msg: "", name: "" };
 
-  if (req.method === "POST") {
-    if (id === "123" && password === "123") {
-      const json = { code: "00", msg: "정상", name: "신대범", };
-  
-      return new Response(JSON.stringify(json), {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    } else {
-      const json = { code: "40", msg: "아이디 또는 비밀번호가 다릅니다", };
-
-      return new Response(JSON.stringify(json), {
-        status: 200,
-      });
-    }
-  
+  if (id === "123" && password === "123") {
+    json = { code: "00", msg: "정상", name: "신대범" };
   } else {
-    return new Response(JSON.stringify({ error: "Request method 'GET' is not supported" }), {
-      status: 405,
-    });
+    json = { code: "23", msg: "아이디 또는 비밀번호가 다릅니다" };
   }
+
+  return new NextResponse(JSON.stringify(json));
 
 }
