@@ -9,10 +9,7 @@ const Home = () => {
         "/api/home", 
         { 
           method: "GET", 
-          headers: { 
-            "Content-Type": "application/json",
-          },
-        }
+        },
       );
 
       if (res.status === 200) {
